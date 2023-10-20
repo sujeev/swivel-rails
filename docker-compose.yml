@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_USER: your_user
+      POSTGRES_DB: your_database
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+
+  web:
+    build: .
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - elasticsearch
+    links:
+      - db
+      - elasticsearch
+    environment:
+      DATABASE_URL: "postgresql://your_user:your_password@db:5432/your_database"
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"

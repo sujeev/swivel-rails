@@ -19,7 +19,7 @@
     2. Integrate PostgreSQL
     3. Integrate ElasticSearch
 
-2. [ ] Develop `verticals`
+2. [x] Develop `verticals`
     1. Develop model
     2. Develop controller / API end points
     3. specs

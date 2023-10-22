@@ -46,3 +46,4 @@
 ### What would you improve next?
 1. Create an `author` model and move the author out of the `course` model
 2. `course` could have multiple `categories`
+3. Optimize serializer to only include required fields

@@ -24,7 +24,7 @@
     2. Develop controller / API end points
     3. specs
 
-3. [ ] Develop `categories`
+3. [x] Develop `categories`
     1. Develop model
     2. Develop controller / API end points
     3. specs

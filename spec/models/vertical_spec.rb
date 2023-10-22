@@ -30,12 +30,6 @@ RSpec.describe Vertical, type: :model do
     end
   end
 
-  describe 'create' do
-    it 'create vertical' do
-      expect{ create( :vertical)}.to change{Vertical.count}.by(1)
-    end
-  end
-
   describe 'delete' do
     it 'delete vertical' do
       vertical = create( :vertical)

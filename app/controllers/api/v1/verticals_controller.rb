@@ -1,5 +1,4 @@
 class Api::V1::VerticalsController < ApplicationController
-  protect_from_forgery with: :null_session
   before_action :find_vertical, only: [ :show, :update, :destroy]
 
   def create
@@ -55,6 +54,9 @@ class Api::V1::VerticalsController < ApplicationController
   end
 
   def vertical_params
-    params.permit( :name)
+    params.require(:vertical).permit(
+      :name,
+      categories_attributes: [ :id, :name]
+    )
   end
 end

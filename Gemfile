@@ -65,3 +65,6 @@ end
 group :test do
   gem "sqlite3", "~> 1.4"
 end
+
+gem "searchkick", "~> 5.3"
+gem "elasticsearch", "~> 8.10"

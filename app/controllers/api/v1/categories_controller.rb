@@ -54,7 +54,11 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def category_params
-    params.permit( :name, :vertical_id)
+    params.require(:category).permit(
+      :name,
+      :vertical_id,
+      courses_attributes: [ :id, :name, :author, :state]
+    )
   end
 
 end

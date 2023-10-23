@@ -56,7 +56,7 @@ class Api::V1::VerticalsController < ApplicationController
   def vertical_params
     params.require(:vertical).permit(
       :name,
-      categories_attributes: [ :id, :name]
+      categories_attributes: [ :id, :name, courses_attributes: [ :id, :name, :author, :state]]
     )
   end
 end

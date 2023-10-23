@@ -29,15 +29,16 @@
     2. Develop controller / API end points
     3. specs
 
-4. [ ] Develop `courses`
+4. [x] Develop `courses`
     1. Develop model
     2. Develop controller / API end points
     3. specs
-    4. Integrate ElasticSearch for the `courses#index` 
 
-5. [ ] Update seed
+5. [ ] Integrate ElasticSearch for the `courses#index` 
 
-6. [ ] Implement authentication layer
+6. [ ] Update seed
+
+7. [ ] Implement authentication layer
 
 ## 4. Answers for future implementations
 

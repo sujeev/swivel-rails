@@ -6,8 +6,10 @@ RSpec.describe "Api::V1::Categories", type: :request do
     let!(:vertical) { create( :vertical)}
     let(:params) {
       {
-        name: "abc",
-        vertical_id: vertical.id
+        category: {
+          name: "abc",
+          vertical_id: vertical.id  
+        }
       }
     }
 
@@ -17,7 +19,25 @@ RSpec.describe "Api::V1::Categories", type: :request do
       expect( response_json["name"]).to eq("abc")
     end
 
-    # TODO: save nested objects
+    context 'when category has nested courses' do
+      let(:params) {
+        {
+          category: {
+            name: "abc",
+            vertical_id: vertical.id,
+            courses_attributes: [ { name: "alphabet", author: "Big bird", state: :course_active}]
+          }
+        }
+      }
+  
+      it 'create category with courses' do
+        expect(subject).to eq 200
+        response_json = JSON.parse(response.body)
+        expect( response_json["name"]).to eq("abc")
+        expect( Category.count).to eq 1
+        expect( Course.count).to eq 1
+      end
+    end
   end
 
   describe "GET /show" do
@@ -42,7 +62,9 @@ RSpec.describe "Api::V1::Categories", type: :request do
     subject { put api_v1_category_path( Category.first.id), params: params, headers: { Accept: 'application/json' } }
 
     let(:params) {
-      {name: "abc"}
+      {
+        category: {name: "abc"}
+      }
     }
 
     it 'update category' do
@@ -50,8 +72,6 @@ RSpec.describe "Api::V1::Categories", type: :request do
       response_json = JSON.parse(response.body)
       expect( response_json["name"]).to eq("abc")
     end
-
-    # TODO: update nested objects
   end
 
   describe "GET /destroy" do

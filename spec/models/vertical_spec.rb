@@ -30,12 +30,6 @@ RSpec.describe Vertical, type: :model do
     end
   end
 
-  describe 'create' do
-    it 'create vertical' do
-      expect{ create( :vertical)}.to change{Vertical.count}.by(1)
-    end
-  end
-
   describe 'delete' do
     it 'delete vertical' do
       vertical = create( :vertical)
@@ -48,6 +42,17 @@ RSpec.describe Vertical, type: :model do
         expect{ category.vertical.delete}
           .to change{Vertical.count}.by(-1)
           .and change{Category.count}.by(-1)
+      end
+    end
+
+    context 'when vertical have child categories and courses' do
+      it 'delete vertical' do
+        category = create( :category)
+        course = create( :course, category_id: category.id)
+        expect{ category.vertical.delete}
+          .to change{Vertical.count}.by(-1)
+          .and change{Category.count}.by(-1)
+          .and change{Course.count}.by(-1)
       end
     end
   end

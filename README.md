@@ -36,7 +36,7 @@ This assessment has been broken into a list of tasks, which has been listed belo
     2. Develop controller / API end points
     3. specs
 
-5. [ ] Integrate ElasticSearch for the `courses#index` 
+5. [x] Integrate ElasticSearch to `search#search` 
 
 6. [ ] Update seed
 
@@ -63,3 +63,4 @@ Currently the Database has been developed to allow indexing and with Elasticsear
 1. Create an `author` model and move the author out of the `course` model
 2. `course` could have multiple `categories`
 3. Optimize serializer to only include required fields
+4. Optimize Elasticsearch, so that Enums such as the state would be properly worded.

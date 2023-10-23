@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       resources :verticals, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :courses, only: [:index, :show, :create, :update, :destroy]
+
+      get 'search/search'
     end
   end
 end

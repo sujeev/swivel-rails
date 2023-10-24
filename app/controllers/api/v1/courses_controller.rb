@@ -1,4 +1,4 @@
-class Api::V1::CoursesController < ApplicationController
+class Api::V1::CoursesController < Api::V1::BaseController
   before_action :find_course, only: [ :show, :update, :destroy]
 
   def create

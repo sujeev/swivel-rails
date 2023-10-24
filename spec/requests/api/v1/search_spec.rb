@@ -7,7 +7,7 @@ RSpec.describe "Searches", type: :request do
     let!( :course2) { create( :course, name: "Human anatomy", author: "University grants com", category_id: category.id, state: :active)}
     let!( :course3) { create( :course, name: "Human anatomy: old", author: "University grants com", category_id: category.id, state: :suspended)}
 
-    subject { get api_v1_search_search_path, params: params, headers: { Accept: 'application/json' } }
+    subject { get api_v1_search_search_path, params: params, headers: authenticated_header( { Accept: 'application/json' }) }
 
     context 'without search items' do
 

@@ -7,7 +7,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
       create( :vertical)
     end
 
-    subject { get api_v1_verticals_path, headers: { Accept: 'application/json' } }
+    subject { get api_v1_verticals_path, headers: authenticated_header( { Accept: 'application/json' }) }
 
     it 'provide a list of verticals' do
       expect(subject).to eq 200
@@ -17,7 +17,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
   end
 
   describe "POST /create" do
-    subject { post api_v1_verticals_path, params: params, headers: { Accept: 'application/json' } }
+    subject { post api_v1_verticals_path, params: params, headers: authenticated_header( { Accept: 'application/json' }) }
 
     let(:params) {
       {
@@ -80,7 +80,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
       create( :vertical)
     end
 
-    subject { get api_v1_vertical_path( Vertical.first.id), headers: { Accept: 'application/json' } }
+    subject { get api_v1_vertical_path( Vertical.first.id), headers: authenticated_header( { Accept: 'application/json' }) }
 
     it 'provide a vertical' do
       expect(subject).to eq 200
@@ -94,7 +94,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
       create( :vertical)
     end
 
-    subject { put api_v1_vertical_path( Vertical.first.id), params: params, headers: { Accept: 'application/json' } }
+    subject { put api_v1_vertical_path( Vertical.first.id), params: params, headers: authenticated_header( { Accept: 'application/json' }) }
 
     let(:params) {
       {
@@ -170,7 +170,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
       create( :vertical)
     end
 
-    subject { delete api_v1_vertical_path( Vertical.first.id), headers: { Accept: 'application/json' } }
+    subject { delete api_v1_vertical_path( Vertical.first.id), headers: authenticated_header( { Accept: 'application/json' }) }
 
     it 'delete vertical' do
       expect(subject).to eq 200

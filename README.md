@@ -14,6 +14,8 @@
 
 This assessment has been broken into a list of tasks, which has been listed below. MVC pattern has been used as the primary pattern the assessment is developed on, and provides an JSON based API. Which supports nested resources. Elasticsearch would be used to implement a standaized search. OOP concepts are used as the core. 
 
+For the ease of the reviewer I have included a Postman collection.
+
 ## 3. Tasks
 
 1. [x] Build docker container which includes the above stack
@@ -40,11 +42,17 @@ This assessment has been broken into a list of tasks, which has been listed belo
 
 6. [x] Update seed
 
-7. [ ] Implement authentication layer
-    1. setup devise for authentication
+7. [x] Implement authentication layer
+    1. setup devise with tokens for authentication, signup and login would provide a bearer authorization token, which would be used with subsequent API calls.
     2. authorize API
-    3. setup and configure gems for oauth
-    4. setup a provider
+
+
+Implementing oauth would have to be stopped due to the following reasons, without which it would prevent me from completing this assessment.
+
+1. To implement the entire flow a proper frontend is needed.
+2. The frontend would contain the major portion of work with regard to oauth integration.
+3. Whilst the backend would only store that information, such as uid, provider, name and avatar, and a few calls.
+
 
 ## 4. Setup
 

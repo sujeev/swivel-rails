@@ -38,7 +38,7 @@ This assessment has been broken into a list of tasks, which has been listed belo
 
 5. [x] Integrate ElasticSearch to `search#search` 
 
-6. [ ] Update seed
+6. [x] Update seed
 
 7. [ ] Implement authentication layer
 

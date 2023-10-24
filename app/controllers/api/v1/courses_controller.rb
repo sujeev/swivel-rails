@@ -43,7 +43,7 @@ class Api::V1::CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
+    @courses = Course.active.all
     render json: @courses
   end
 

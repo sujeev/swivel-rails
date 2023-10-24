@@ -74,6 +74,7 @@ RSpec.describe "Api::V1::Courses", type: :request do
   describe "GET /index" do
     before do
       create( :course)
+      create( :course, state: :suspended)
     end
 
     subject { get api_v1_courses_path, headers: { Accept: 'application/json' } }
@@ -81,6 +82,7 @@ RSpec.describe "Api::V1::Courses", type: :request do
     it 'provide a list of courses' do
       expect(subject).to eq 200
       response_json = JSON.parse(response.body)
+      expect( response_json.count).to eq(1)
       expect( response_json[0]["name"]).to eq("book name")
     end
   end

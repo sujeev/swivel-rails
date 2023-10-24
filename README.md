@@ -41,9 +41,9 @@ This assessment has been broken into a list of tasks, which has been listed belo
 6. [x] Update seed
 
 7. [ ] Implement authentication layer
-    1. setup devise for authentication
+    1. setup devise with tokens for authentication
     2. authorize API
-    3. setup and configure gems for oauth
+    3. configure for oauth
     4. setup a provider
 
 ## 4. Setup

@@ -58,7 +58,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
             name: "food",
             categories_attributes: [
               { name: "diet",
-                courses_attributes: [ { name: "loose weight in 21 days", author: "internet memes", state: :course_active}]
+                courses_attributes: [ { name: "loose weight in 21 days", author: "internet memes", state: :active}]
               },
               { name: "health"}
             ]  
@@ -144,7 +144,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
             categories_attributes: [
               { 
                 id: category1.id, name: "updated diet",
-                courses_attributes: [ { id: course.id, name: "updated name", author: "updated author", state: :course_active}]
+                courses_attributes: [ { id: course.id, name: "updated name", author: "updated author", state: :active}]
               },
               { id: category2.id, name: "updated health"}
             ]  

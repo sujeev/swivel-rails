@@ -9,7 +9,7 @@ RSpec.describe "Api::V1::Courses", type: :request do
         course: {
           name: "abc",
           author: "xyz",
-          state: :course_active,
+          state: :active,
           category_id: category.id  
         }
       }
@@ -45,7 +45,7 @@ RSpec.describe "Api::V1::Courses", type: :request do
 
     let(:params) {
       {
-        course: { name: "abc", author: "xyz", state: :course_suspended}
+        course: { name: "abc", author: "xyz", state: :suspended}
       }
     }
 
@@ -54,7 +54,7 @@ RSpec.describe "Api::V1::Courses", type: :request do
       response_json = JSON.parse(response.body)
       expect( response_json["name"]).to eq("abc")
       expect( response_json["author"]).to eq("xyz")
-      expect( response_json["state"]).to eq( "course_suspended")
+      expect( response_json["state"]).to eq( "suspended")
     end
   end
 

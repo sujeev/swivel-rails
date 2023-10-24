@@ -25,7 +25,7 @@ RSpec.describe "Api::V1::Categories", type: :request do
           category: {
             name: "abc",
             vertical_id: vertical.id,
-            courses_attributes: [ { name: "alphabet", author: "Big bird", state: :course_active}]
+            courses_attributes: [ { name: "alphabet", author: "Big bird", state: :active}]
           }
         }
       }
@@ -90,6 +90,7 @@ RSpec.describe "Api::V1::Categories", type: :request do
   describe "GET /index" do
     before do
       create( :category)
+      create( :category, name: "health", state: :suspended)
     end
 
     subject { get api_v1_categories_path, headers: { Accept: 'application/json' } }

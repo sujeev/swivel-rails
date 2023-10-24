@@ -4,5 +4,5 @@ class Course < ApplicationRecord
 
   validates :name, presence: true
   validates :author, presence: true
-  enum :state, { course_active: 0, course_suspended: 1 }, default: :course_active
+  enum :state, { active: 0, suspended: 1 }, default: :active
 end

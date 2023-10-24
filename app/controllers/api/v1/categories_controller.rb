@@ -43,7 +43,7 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @categories = Category.active.all
     render json: @categories
   end
 

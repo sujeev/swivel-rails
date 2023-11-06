@@ -41,12 +41,6 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'rack-cors'
-
-# authentication
-gem 'devise'
-gem 'devise-jwt'
-
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -72,8 +66,5 @@ group :test do
   gem "sqlite3", "~> 1.4"
 end
 
-# search
 gem "searchkick", "~> 5.3"
 gem "elasticsearch", "~> 8.10"
-
-

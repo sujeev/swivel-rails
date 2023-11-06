@@ -9,21 +9,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      devise_for :users, 
-        # path: '',
-        path_names: {
-          sign_in: 'login',
-          sign_out: 'logout',
-          registration: 'signup'
-        },
-        controllers: { 
-          sessions: 'api/v1/users/sessions', 
-          registrations: 'api/v1/users/registrations' 
-        }
-      #    resources :classrooms
-      #    resources :notifications
-      # end
-
       resources :verticals, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :courses, only: [:index, :show, :create, :update, :destroy]

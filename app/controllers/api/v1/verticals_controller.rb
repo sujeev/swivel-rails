@@ -1,4 +1,4 @@
-class Api::V1::VerticalsController < Api::V1::BaseController
+class Api::V1::VerticalsController < ApplicationController
   before_action :find_vertical, only: [ :show, :update, :destroy]
 
   def create

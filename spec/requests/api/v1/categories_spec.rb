@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Categories", type: :request do
   describe "GET /create" do
-
-    subject { 
-      post api_v1_categories_path, params: params, headers: authenticated_header( { Accept: 'application/json' })
-    }
+    subject { post api_v1_categories_path, params: params, headers: { Accept: 'application/json' } }
     let!(:vertical) { create( :vertical)}
     let(:params) {
       {
@@ -48,7 +45,7 @@ RSpec.describe "Api::V1::Categories", type: :request do
       create( :category)
     end
 
-    subject { get api_v1_category_path( Category.first.id), headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { get api_v1_category_path( Category.first.id), headers: { Accept: 'application/json' } }
 
     it 'provide a category' do
       expect(subject).to eq 200
@@ -62,7 +59,7 @@ RSpec.describe "Api::V1::Categories", type: :request do
       create( :category)
     end
 
-    subject { put api_v1_category_path( Category.first.id), params: params, headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { put api_v1_category_path( Category.first.id), params: params, headers: { Accept: 'application/json' } }
 
     let(:params) {
       {
@@ -82,7 +79,7 @@ RSpec.describe "Api::V1::Categories", type: :request do
       create( :category)
     end
 
-    subject { delete api_v1_category_path( Category.first.id), headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { delete api_v1_category_path( Category.first.id), headers: { Accept: 'application/json' } }
 
     it 'delete category' do
       expect(subject).to eq 200
@@ -96,7 +93,7 @@ RSpec.describe "Api::V1::Categories", type: :request do
       create( :category, name: "health", state: :suspended)
     end
 
-    subject { get api_v1_categories_path, headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { get api_v1_categories_path, headers: { Accept: 'application/json' } }
 
     it 'provide a list of categories' do
       expect(subject).to eq 200

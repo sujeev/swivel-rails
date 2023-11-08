@@ -15,6 +15,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "XvixHPlaRAH6p1GYX9m5gWZJCF9sv5eRejJyLEaJVIA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -40,6 +50,16 @@
 				{
 					"name": "show",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "VOAeEEP8BwFZtn-BsRiY1MkEGgCNy0bzfEeUEZzaIwM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -397,7 +417,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n \"user\": {\n  \"email\":\"abc10@example.com\",\n  \"password\":\"password\"\n }\n}",
+							"raw": "{\n \"user\": {\n  \"email\":\"abc13@example.com\",\n  \"password\":\"password\"\n }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -422,50 +442,9 @@
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "OAuth Login",
 					"request": {
 						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n \"user\": {\n  \"email\":\"abc@example.com\",\n  \"password\":\"password\"\n }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/v1/users/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Logout",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkODE1MTQxNC02OTdmLTQ3ZmEtYTk2Yy1kMzIxMTIwN2EyOWEiLCJzdWIiOiI5Iiwic2NwIjoiYXBpX3YxX3VzZXIiLCJhdWQiOm51bGwsImlhdCI6MTY5ODE1NTgyMiwiZXhwIjoxNjk5MDE5ODIyfQ.2sAwlv81DiqE0oubWDNjQ8tv9iM3yqsM3JC7fw7POMQ",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -477,17 +456,37 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/users/logout",
+							"raw": "http://localhost:3000/oauth/token?grant_type=password&email=abc13@example.com&password=password&client_id=a1FnszOaRnJ5_U29PMKSg3e3Wu5di2sgY0d_CnvqdRU&client_secret=YpQO_lNXFgzBmN2OKSP0legyOmWmEDlaBPSYKbZCPxE",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"api",
-								"v1",
-								"users",
-								"logout"
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "email",
+									"value": "abc13@example.com"
+								},
+								{
+									"key": "password",
+									"value": "password"
+								},
+								{
+									"key": "client_id",
+									"value": "a1FnszOaRnJ5_U29PMKSg3e3Wu5di2sgY0d_CnvqdRU"
+								},
+								{
+									"key": "client_secret",
+									"value": "YpQO_lNXFgzBmN2OKSP0legyOmWmEDlaBPSYKbZCPxE"
+								}
 							]
 						}
 					},
@@ -501,6 +500,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "XvixHPlaRAH6p1GYX9m5gWZJCF9sv5eRejJyLEaJVIA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -508,7 +517,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/search/search?search=Jim",
+					"raw": "http://localhost:3000/api/v1/search/search?search=",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -523,7 +532,7 @@
 					"query": [
 						{
 							"key": "search",
-							"value": "Jim"
+							"value": ""
 						}
 					]
 				}

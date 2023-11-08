@@ -60,7 +60,22 @@ Since docker has been configued to setup the enviorement use the following comma
 
 ```docker-compose up --build```
 
-## 5. Answers for future implementations
+## 5. Usage
+
+Since OAuth has been implemented you will first need to get application credentials (client application has been created using the seeds), which you can do using the following:
+
+1. access the enviorenment using `rails c`
+2. get the `client_id` using `Doorkeeper::Application.first.uid`
+3. get the `client_secret` using `Doorkeeper::Application.first.secret`
+
+Use the `client_id` and `client_secret` along with the user credentials to login, please refer the following image:
+![oauth login](docs/oauth-login.png)
+
+Use the `access_token` to access the rest of the API
+
+A Postman collection has been included for easier access.
+
+## 6. Answers for future implementations
 
 ### How does your solution perform? 
 

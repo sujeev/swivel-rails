@@ -1,13 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe "Searches", type: :request do
+  let(:user) { create(:user, email: "tester@example.com") }
+  let!(:token) { 
+    app_id = Doorkeeper::Application.create(name: "Test API", redirect_uri: "", scopes: "").id
+    Doorkeeper::AccessToken.create!(
+      application_id: app_id,
+      resource_owner_id: user.id,
+      scopes: ''
+    ).token
+  }
+
   describe "GET /search" do
     let!( :category) { create( :category, name: "science")}
     let!( :course1) { create( :course, name: "General science", author: "Education Dept", category_id: category.id, state: :active)}
     let!( :course2) { create( :course, name: "Human anatomy", author: "University grants com", category_id: category.id, state: :active)}
     let!( :course3) { create( :course, name: "Human anatomy: old", author: "University grants com", category_id: category.id, state: :suspended)}
 
-    subject { get api_v1_search_search_path, params: params, headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { get api_v1_search_search_path, params: params, headers: { Accept: 'application/json', 'Authorization' => "Bearer #{token}" } }
 
     context 'without search items' do
 

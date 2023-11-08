@@ -4,7 +4,7 @@ class Api::V1::VerticalsController < Api::V1::BaseController
   def create
     @vertical = Vertical.new( vertical_params)
     if @vertical.save
-      render json: @vertical
+      render json: VerticalSerializer.new(@vertical).serializable_hash[:data][:attributes]
     else
       render json: { error: "Error creating vertical"}
     end
@@ -12,7 +12,7 @@ class Api::V1::VerticalsController < Api::V1::BaseController
 
   def show
     if @vertical
-      render json: @vertical
+      render json: VerticalSerializer.new(@vertical).serializable_hash[:data][:attributes]
     else
       render json: { error: "Vertical not found"}
     end
@@ -21,7 +21,7 @@ class Api::V1::VerticalsController < Api::V1::BaseController
   def update
     if @vertical
       if @vertical.update( vertical_params)
-        render json: @vertical
+        render json: VerticalSerializer.new(@vertical).serializable_hash[:data][:attributes]
       else
         render json: { error: "Vertical not updated"}
       end
@@ -44,7 +44,7 @@ class Api::V1::VerticalsController < Api::V1::BaseController
 
   def index 
     @verticals = Vertical.all
-    render json: @verticals
+    render json: VerticalSerializer.new(@verticals).serializable_hash
   end
 
   private

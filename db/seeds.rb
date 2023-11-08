@@ -114,3 +114,5 @@ Vertical.create(
     }
   ]
 )
+
+Doorkeeper::Application.create(name: "Frontend API", redirect_uri: "", scopes: "")

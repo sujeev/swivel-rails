@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 gem 'rack-cors'
 
 # authentication
+gem 'doorkeeper', '~> 5.6', '>= 5.6.6'
 gem 'devise'
 gem 'devise-jwt'
 

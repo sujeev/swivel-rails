@@ -1,23 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Verticals", type: :request do
+  let(:user) { create(:user, email: "tester@example.com") }
+  let!(:token) { 
+    app_id = Doorkeeper::Application.create(name: "Test API", redirect_uri: "", scopes: "").id
+    Doorkeeper::AccessToken.create!(
+      application_id: app_id,
+      resource_owner_id: user.id,
+      scopes: ''
+    ).token
+  }
 
   describe "GET /index" do
     before do
       create( :vertical)
     end
 
-    subject { get api_v1_verticals_path, headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { get api_v1_verticals_path, headers: { Accept: 'application/json', 'Authorization' => "Bearer #{token}" } }
 
     it 'provide a list of verticals' do
       expect(subject).to eq 200
       response_json = JSON.parse(response.body)
-      expect( response_json[0]["name"]).to eq("test_food")
+      expect( response_json["data"].count).to eq(1)
+      expect( response_json["data"][0]["attributes"]["name"]).to eq("test_food")
     end
   end
 
   describe "POST /create" do
-    subject { post api_v1_verticals_path, params: params, headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { post api_v1_verticals_path, params: params, headers: { Accept: 'application/json', 'Authorization' => "Bearer #{token}" } }
 
     let(:params) {
       {
@@ -80,7 +90,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
       create( :vertical)
     end
 
-    subject { get api_v1_vertical_path( Vertical.first.id), headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { get api_v1_vertical_path( Vertical.first.id), headers: { Accept: 'application/json', 'Authorization' => "Bearer #{token}" } }
 
     it 'provide a vertical' do
       expect(subject).to eq 200
@@ -94,7 +104,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
       create( :vertical)
     end
 
-    subject { put api_v1_vertical_path( Vertical.first.id), params: params, headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { put api_v1_vertical_path( Vertical.first.id), params: params, headers: { Accept: 'application/json', 'Authorization' => "Bearer #{token}" } }
 
     let(:params) {
       {
@@ -170,7 +180,7 @@ RSpec.describe "Api::V1::Verticals", type: :request do
       create( :vertical)
     end
 
-    subject { delete api_v1_vertical_path( Vertical.first.id), headers: authenticated_header( { Accept: 'application/json' }) }
+    subject { delete api_v1_vertical_path( Vertical.first.id), headers: { Accept: 'application/json', 'Authorization' => "Bearer #{token}" } }
 
     it 'delete vertical' do
       expect(subject).to eq 200

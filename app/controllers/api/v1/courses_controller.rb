@@ -4,7 +4,7 @@ class Api::V1::CoursesController < Api::V1::BaseController
   def create
     @course = Course.new( course_params)
     if @course.save
-      render json: @course
+      render json: CourseSerializer.new(@course).serializable_hash[:data][:attributes]
     else
       render json: { error: "Error creating course"}
     end
@@ -12,7 +12,7 @@ class Api::V1::CoursesController < Api::V1::BaseController
 
   def show
     if @course
-      render json: @course
+      render json: CourseSerializer.new(@course).serializable_hash[:data][:attributes]
     else
       render json: { error: "Course not found"}
     end
@@ -21,7 +21,7 @@ class Api::V1::CoursesController < Api::V1::BaseController
   def update
     if @course
       if @course.update( course_params)
-        render json: @course
+        render json: CourseSerializer.new(@course).serializable_hash[:data][:attributes]
       else
         render json: { error: "Course not updated"}
       end
@@ -44,7 +44,7 @@ class Api::V1::CoursesController < Api::V1::BaseController
 
   def index
     @courses = Course.active.all
-    render json: @courses
+    render json: CourseSerializer.new(@courses).serializable_hash
   end
 
   private

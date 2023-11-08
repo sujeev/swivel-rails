@@ -47,6 +47,7 @@ gem 'rack-cors'
 gem 'doorkeeper', '~> 5.6', '>= 5.6.6'
 gem 'devise'
 gem 'devise-jwt'
+gem 'jsonapi-serializer'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

@@ -4,7 +4,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def create
     @category = Category.new( category_params)
     if @category.save
-      render json: @category
+      render json: CategorySerializer.new(@category).serializable_hash[:data][:attributes]
     else
       render json: { error: "Error creating category"}
     end
@@ -12,7 +12,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
 
   def show
     if @category
-      render json: @category
+      render json: CategorySerializer.new(@category).serializable_hash[:data][:attributes]
     else
       render json: { error: "Category not found"}
     end
@@ -21,7 +21,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   def update
     if @category
       if @category.update( category_params)
-        render json: @category
+        render json: CategorySerializer.new(@category).serializable_hash[:data][:attributes]
       else
         render json: { error: "Category not updated"}
       end
@@ -44,7 +44,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
 
   def index
     @categories = Category.active.all
-    render json: @categories
+    render json: CategorySerializer.new(@categories).serializable_hash
   end
 
   private

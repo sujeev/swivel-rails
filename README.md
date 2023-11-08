@@ -91,5 +91,3 @@ Currently the Database has been developed to allow indexing and with Elasticsear
 2. `course` could have multiple `categories`
 3. Optimize serializer to only include required fields
 4. Optimize Elasticsearch, so that Enums such as the state would be properly worded.
-
-touched
